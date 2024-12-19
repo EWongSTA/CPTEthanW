@@ -31,6 +31,16 @@ public class methodsCPT{
 	con.println("     * * * *  *     *  *   *     *     **     ");
 	con.println("     *     *  *******  *     *   *******      ");
 	
-}
+	}
+	
+	public static int Random1to100(){
+		//generate a random integer from 1 to 100
+		//and return it back
+		int intRandom;
+		intRandom = (int)(Math.random()*100 + 1);
+		
+		
+		return intRandom;
+	}
 }	
 	

@@ -9,6 +9,7 @@ public class ICSCPT{
 		TextInputFile Marvel = new TextInputFile("MarvelCharacters.txt");
 		TextInputFile Anime = new TextInputFile("Anime.txt");
 		TextInputFile Animals = new TextInputFile("Animals.txt");
+		TextOutputFile highscore = new TextOutputFile("highscore.txt", true);
 		
 		methodsCPT.logo(con);
 		con.sleep(3000);
@@ -21,9 +22,22 @@ public class ICSCPT{
 		con.println("What would you like to do: Play / HighScore / Help / Quit");
 		strChoice = con.readLine();
 		
+		String strWord[][];
+		String strTheme;
+
+		
+				
 		if (strChoice.equalsIgnoreCase("play")){
 			con.clear();
-			con.println("play");
+
+			while(themes.eof() == false){
+				con.println("Choose a Theme:");	
+				strTheme = con.readLine();
+				themes.readLine();
+				if(strTheme.equalsIgnoreCase("Pokemon")){
+					
+				}			
+			}
 		}else if(strChoice.equalsIgnoreCase("highscore")){
 			con.clear();
 			con.println("highscore");
