@@ -22,15 +22,15 @@ public class ICSCPT{
 	con.println("*   ***  *     *  *****          *        *   ");
 	con.println("*     *  *     *  *              *        *   ");
 	con.println("*******  *******  *******  *******  *******   ");
-	con.println("      ");
-	con.println("        ");
-	con.println("   ");
-	con.println("           ");
-	con.println("    ");
-	con.println("   ");
-	con.println("     ");
-	con.println("         ");
-	con.println("        ");
+	con.println("      *********  *      *  ********                          ");
+	con.println("          *      *      *  *                          ");
+	con.println("          *      ********  *****                            ");
+	con.println("          *      *      *  *                           ");
+	con.println("          *      *      *  ********                             ");
+	con.println("                                              ");
+	con.println("                                              ");
+	con.println("                                              ");
+	con.println("                                              ");
 	}	
 	
 }
