@@ -1,3 +1,5 @@
+import java.io.Console;
+
 import arc.*;
 
 public class ICSCPT{
@@ -14,12 +16,12 @@ public class ICSCPT{
 	
 	}
 	public static void logo(Console con){
-	con.println("");
-	con.println("");
-	con.println("");
-	con.println("");
-	con.println("");
-	con.println("");
+	con.println("*******  *     *  *******  *******  *******   ");
+	con.println("*        *     *  *        *        *         ");
+	con.println("*        *     *  *        *******  *******   ");
+	con.println("*   ***  *     *  *****          *        *   ");
+	con.println("*     *  *     *  *              *        *   ");
+	con.println("*******  *******  *******  *******  *******   ");
 	con.println("      ");
 	con.println("        ");
 	con.println("   ");
