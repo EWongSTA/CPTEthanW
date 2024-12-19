@@ -14,14 +14,12 @@ public class ICSCPT{
 	
 	}
 	public static void logo(Console con){
-	con.println(" ______              ______   ____    ____ ");
-	con.println("|         |      |  |        |       |     ");
-	con.println("|         |      |  |        |       |     ");
-	con.println("|   ___   |      |  |_____   |____   |____ ");
-	con.println("|     |   |      |  |             |       |");
-	con.println("|_____|   |______|  |______   ____|   ____|");
-	con.println("   ");
-	con.println("    ");
+	con.println("");
+	con.println("");
+	con.println("");
+	con.println("");
+	con.println("");
+	con.println("");
 	con.println("      ");
 	con.println("        ");
 	con.println("   ");
