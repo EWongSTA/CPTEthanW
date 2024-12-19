@@ -1,0 +1,13 @@
+pikachu
+squirtle
+charmander
+bulbasaur
+blastoise
+charizard
+venusaur
+rhydon
+rhyhorn
+articuno
+moltres
+zapdos
+
