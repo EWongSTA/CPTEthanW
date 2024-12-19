@@ -1,5 +1,3 @@
-import java.io.Console;
-
 import arc.*;
 
 public class ICSCPT{
@@ -12,25 +10,10 @@ public class ICSCPT{
 		TextInputFile Anime = new TextInputFile("Anime.txt");
 		TextInputFile Animals = new TextInputFile("Animals.txt");
 		
-		logo(con);
+		methodsCPT.logo(con);
+		con.clear();
 	
 	}
-	public static void logo(Console con){
-	con.println("*******  *     *  *******  *******  *******   ");
-	con.println("*        *     *  *        *        *         ");
-	con.println("*        *     *  *        *******  *******   ");
-	con.println("*   ***  *     *  *****          *        *   ");
-	con.println("*     *  *     *  *              *        *   ");
-	con.println("*******  *******  *******  *******  *******   ");
-	con.println("      *********  *      *  ********                          ");
-	con.println("          *      *      *  *                          ");
-	con.println("          *      ********  *****                            ");
-	con.println("          *      *      *  *                           ");
-	con.println("          *      *      *  ********                             ");
-	con.println("                                              ");
-	con.println("                                              ");
-	con.println("                                              ");
-	con.println("                                              ");
-	}	
+}	
 	
-}
+
