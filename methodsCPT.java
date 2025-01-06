@@ -9,12 +9,11 @@ public class methodsCPT{
 	}
 	public static void logo(Console con){
 	//title screen
-	con.println("*******  *     *  *******  *******  *******   ");
-	con.println("*        *     *  *        *        *         ");
-	con.println("*        *     *  *        *******  *******   ");
-	con.println("*   ***  *     *  *****          *        *   ");
-	con.println("*     *  *     *  *              *        *   ");
-	con.println("*******  *******  *******  *******  *******   ");
+	con.println("  *******  *     *  ******  *******  *******   ");
+	con.println("  *        *     *  *       *        *         ");
+	con.println("  *   ***  *     *  ****    *******  *******   ");
+	con.println("  *     *  *     *  *             *        *   ");
+	con.println("  *******  *******  ******  *******  *******   ");
 	//spacing line
 	con.println(" ");
 	con.println("      *********  *      *  ********           ");
@@ -24,12 +23,12 @@ public class methodsCPT{
 	con.println("          *      *      *  ********           ");
 	//spacing line
 	con.println(" ");
-	con.println("     *     *  *******  ********  *******      ");
-	con.println("     *     *  *     *  *      *  *     **     ");
-	con.println("     *     *  *     *  ********  *      *     ");
-	con.println("     *  *  *  *     *  * **      *      *     ");
-	con.println("     * * * *  *     *  *   *     *     **     ");
-	con.println("     *     *  *******  *     *   *******      ");
+	con.println("     *     *   *******  ******  *******      ");
+	con.println("     *     *   *     *  *    *  *     **     ");
+	con.println("     *     *   *     *  ******  *      *     ");
+	con.println("     *  *  *   *     *  * **    *      *     ");
+	con.println("     * * * *   *     *  *   *   *     **     ");
+	con.println("     *     *   *******  *     * *******      ");
 	
 	}
 	
