@@ -1,8 +1,15 @@
+//-------------------------------------------------------------------------
+// Name:         EthanCPT
+// Purpose:      Create a Guess the Word Game
+// Author:       Wong E.
+// Created:      Dec 16, 2024
+//-------------------------------------------------------------------------
+
 import arc.*;
 
 public class ICSCPT{
 	public static void main(String [] args){
-		Console con = new Console();
+		Console con = new Console("Guess The Word", 1280, 720);
 		TextInputFile themes = new TextInputFile("themes.txt");
 		TextInputFile pokemon = new TextInputFile("pokemon.txt");
 		TextInputFile VideoGames = new TextInputFile("VideoGames.txt");
@@ -20,75 +27,64 @@ public class ICSCPT{
 		//main menu
 		String strChoice;
 		con.println("Welcome to Guess the Word!");
-		con.println("What would you like to do: Play / HighScore / Help / Quit");
+		con.println("What would you like to do:");
+		con.println("Play / HighScore / Help / Quit");
 		strChoice = con.readLine();
 		
 		int intLength;
 		String strThemeWord[][];
-		strThemeWord = new String[intLength][2];
 		String strTheme;
-		
-		//bubble sorting algorithm
-		int intRow;
-		con.println("BEFORE");
-		for(intRow = 0; intRow < 10; intRow++){
-			con.println(strShopping[intRow][0] + " | " + strShopping[intRow][1]);
-		}
-		String strTempName;
-		String strTempPrice;
-		int intRow2;
-		for(intRow2 = 0; intRow2 < 10 - 1; intRow2++){
-			for(intRow = 0; intRow < 10-1; intRow++){
-				if(Integer.parseInt(strShopping[intRow][1]) > Integer.parseInt(strShopping[intRow+1][1])){
-				strTempName = strShopping[intRow][0];
-				strTempPrice = strShopping[intRow][1];
-				strShopping[intRow][0] = strShopping[intRow + 1][0];
-				strShopping[intRow][1] = strShopping[intRow + 1][1];
-				
-				strShopping[intRow + 1][0] = strTempName;
-				strShopping[intRow+1][1] = strTempPrice;
-				System.out.println(strTempName);
-				System.out.println(strTempPrice);
-				}
-			}
-		}
-		con.println("AFTER");
-		for(intRow = 0; intRow < 10; intRow++){
-			con.println(strShopping[intRow][0] + " | " + strShopping[intRow][1]);
-		}
-		
-				
-		if (strChoice.equalsIgnoreCase("play")){
+			
+		if (strChoice.equalsIgnoreCase("p")){
 			con.clear();
-
+			System.out.println(strChoice);
 			while(themes.eof() == false){
 				con.println("Choose a Theme:");	
+				con.println("(1) pokemon");
+				con.println("(2) Video Games");
+				con.println("(3) Marvel Characters");
+				con.println("(4) Anime");
+				con.println("(5) Animals");
 				strTheme = con.readLine();
 				themes.readLine();
-				if(strTheme.equalsIgnoreCase("Pokemon")){
+				themes.close();
+				if(strTheme.equalsIgnoreCase("1")){
 					pokemon.readLine();
-				}else if(strTheme.equalsIgnoreCase("Video Games")){
+				}else if(strTheme.equalsIgnoreCase("2")){
 					VideoGames.readLine();
-				}else if (strTheme.equalsIgnoreCase("Marvel Characters")){
+				}else if (strTheme.equalsIgnoreCase("3")){
 					Marvel.readLine();
 				}
 			}
-		}else if(strChoice.equalsIgnoreCase("highscore")){
+		}else if(strChoice.equalsIgnoreCase("hs")){
 			con.clear();
+			System.out.println(strChoice);
 			con.println("highscore");
-		}else if(strChoice.equalsIgnoreCase("help")){
+		}else if(strChoice.equalsIgnoreCase("h")){
 			con.clear();
+			System.out.println(strChoice);
 			//help option
 			con.println("In Guess The Word, the aim of the game is to correctly guess what the word is.");
 			con.println("You get a certain amount of guesses and when you run out of guesses you lose!");
 			con.println("Try and guess as many words as possible!");
+		}else if(strChoice.equalsIgnoreCase("Secret")){
+			con.clear();
+			System.out.println(strChoice);
+			con.println("You found the secret menu!");
+			con.println("Here is a funny joke for you.");
+			con.sleep(2000);
+			con.println("Where did the Software Developer go?");
+			con.sleep(1500);
+			con.println("He probably ransomware!");
 		}else{
 			con.clear();
-			con.println("quit");
+			System.out.println(strChoice);
+			con.closeConsole();
 		}
 		
-	
+		//bubble sorting algorithm
+
+		}
 	}
-}	
 	
 
