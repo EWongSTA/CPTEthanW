@@ -18,7 +18,6 @@ public class ICSCPT{
 		TextInputFile Marvel = new TextInputFile("MarvelCharacters.txt");
 		TextInputFile Anime = new TextInputFile("Anime.txt");
 		TextInputFile Animals = new TextInputFile("Animals.txt");
-		TextOutputFile highscore = new TextOutputFile("highscore.txt", true);
 		
 		//logo
 		methodsCPT.logo(con);
@@ -32,6 +31,8 @@ public class ICSCPT{
 		strChoice = "";
 		String strBackMenu;
 		String strTheme;
+		String strUsernameHS;
+		int intScore;
 		
 		//keep the game running 
 		while(true){
@@ -78,12 +79,28 @@ public class ICSCPT{
 				con.println("(4) Pokemon");
 				con.println("(5) Video Games");
 				strTheme = con.readLine();
-								
+				if (strTheme.equals("1")){
+					con.println("You have chosen " + strTheme);
+				}
+				else if(strTheme.equals("2")){
+					con.println("You have chosen " + strTheme);
+				}
+				else if(strTheme.equals("3")){
+					con.println("You have chosen " + strTheme);
+				}
+				else if(strTheme.equals("4")){
+					con.println("You have chosen " + strTheme);
+				}
+				else if(strTheme.equals("5")){
+					con.println("You have chosen " + strTheme);
+				}
 			}
 			//highscore screen
 			while(strScreen.equals("highscore")){
+					con.println("HighScores:");
+					
+				}
 				
-			}
 			//help option
 			while(strScreen.equals("help")){
 				con.clear();
