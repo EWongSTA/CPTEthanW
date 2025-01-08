@@ -60,14 +60,17 @@ public class ICSCPT{
 					strScreen = "menu";
 				}
 			}
-			
+			//play screens
 			while(strScreen.equals("play")){
 				con.clear();
 				System.out.println(strChoice);
+				//username
 				con.println("What is your username?");
 				strUsername = con.readLine();
 				con.clear();
 				con.println("Your Username: " + strUsername);
+				con.println("");
+				//theme chooser
 				con.println("Choose a Theme:");
 				con.println("(1) Anime");
 				con.println("(2) Animals");
