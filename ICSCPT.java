@@ -23,89 +23,82 @@ public class ICSCPT{
 		con.sleep(3000);
 		con.clear();
 		
-		while (true){
 		String strScreen = "menu";
 		String strChoice;
 		strChoice = "";
 		String strBackMenu;
 		
-		
-		//main menu
-		while (strScreen.equals("menu")){
-			con.clear();
-			con.println("Welcome to Guess the Word!");
-			con.println("What would you like to do:");
-			con.println("Play / HighScore / Help / Quit");
-			strChoice = con.readLine();
-			int intLength;
-			String strThemeWord[][];
-			String strTheme;
-			
-			if (strChoice.equalsIgnoreCase("p")){
+		while(true){
+			while(strScreen.equals("menu")){
 				con.clear();
-				System.out.println(strChoice);
-				while(themes.eof() == false){
-					strScreen = "theme";
-					con.println("Choose a Theme:");	
-					con.println("(1) pokemon");
-					con.println("(2) Video Games");
-					con.println("(3) Marvel Characters");
-					con.println("(4) Anime");
-					con.println("(5) Animals");
-					strTheme = con.readLine();
-					themes.readLine();
-					themes.close();
-					if(strTheme.equalsIgnoreCase("1")){
-						pokemon.readLine();
-					}else if(strTheme.equalsIgnoreCase("2")){
-						VideoGames.readLine();
-					}else if (strTheme.equalsIgnoreCase("3")){
-						Marvel.readLine();
-					}
+				con.println("Welcome to Guess the Word!");
+				con.println("What would you like to do:");
+				con.println("Play / HighScore / Help / Quit");
+				strChoice = con.readLine();
+				if(strChoice.equalsIgnoreCase("p")){
+					strScreen = "play";
 				}
-			}else if(strChoice.equalsIgnoreCase("hs")){
-				strScreen = "highscore";
-				con.clear();
-				System.out.println(strChoice);
+				else if(strChoice.equalsIgnoreCase("hs")){
+					strScreen = "highscore";
+				}
+				else if(strChoice.equalsIgnoreCase("h")){
+					strScreen = "help";
+				}
+				else if(strChoice.equalsIgnoreCase("secret")){
+					strScreen = "secret";
+				}
+				else if(strChoice.equalsIgnoreCase("q")){
+					strScreen = "quit";
+				}else{
+					strScreen = "menu";
+				}
+			}
+			
+			while(strScreen.equals("highscore")){
 				
-			}else if(strChoice.equalsIgnoreCase("h")){
-				strScreen = "help";
+			}
+			//help option
+			while(strScreen.equals("help")){
 				con.clear();
 				System.out.println(strChoice);
-				//help option
 				con.println("In Guess The Word, the aim of the game is to correctly guess what the word is.");
 				con.println("You get a certain amount of guesses and when you run out of guesses you lose!");
 				con.println("Try and guess as many words as possible!");
-			}else if(strChoice.equalsIgnoreCase("Secret")){
-				strScreen = "secret";
-				con.clear();
-				System.out.println(strChoice);
-				con.println("You found the secret menu!");
-				con.println("Here is a funny joke for you.");
-				con.sleep(2000);
-				con.println("Where did the Software Developer go?");
-				con.sleep(1500);
-				con.println("He probably ransomware!");
-			}else{
-				con.clear();
-				System.out.println(strChoice);
-				con.closeConsole();
-			}
-			
-			//bubble sorting algorithm
-
-			}
-			
-			while (strScreen.equals("highscore")){
-				con.println("back to menu?");
-				con.println("Y / N");
+				con.println("");
+				con.println("");
+				con.println("");
+				con.println("Back to menu? Y / N");
 				strBackMenu = con.readLine();
 				if(strBackMenu.equalsIgnoreCase("y")){
 					strScreen = "menu";
 				}
-				
-			while(strScreen.equals("
+			}
+			
+			while(strScreen.equals("secret")){
+				con.clear();
+				System.out.println(strChoice);
+				con.println("You found the secret menu!");
+				con.println("Here is a funny joke for you.");
+				con.println("");
+				con.sleep(2000);
+				con.println("Where did the Software Developer go?");
+				con.sleep(1500);
+				con.println("He probably ransomware!");
+				con.println("");
+				con.println("");
+				con.println("");
+				con.println("Back to Menu? Y / N");
+				strBackMenu = con.readLine();
+				if(strBackMenu.equalsIgnoreCase("y")){
+					strScreen = "menu";
+				}
+			}
+			
+			while(strScreen.equals("quit")){
+				con.closeConsole();
 			}
 		}
+
+
 	}
 }
