@@ -9,7 +9,9 @@ import arc.*;
 
 public class ICSCPT{
 	public static void main(String [] args){
+		//changing console size
 		Console con = new Console("Guess The Word", 1280, 720);
+		//themes + highscore files
 		TextInputFile themes = new TextInputFile("themes.txt");
 		TextInputFile pokemon = new TextInputFile("pokemon.txt");
 		TextInputFile VideoGames = new TextInputFile("VideoGames.txt");
@@ -23,12 +25,17 @@ public class ICSCPT{
 		con.sleep(3000);
 		con.clear();
 		
+		//variables
+		String strUsername = "";
 		String strScreen = "menu";
 		String strChoice;
 		strChoice = "";
 		String strBackMenu;
+		String strTheme;
 		
+		//keep the game running 
 		while(true){
+			//menu screen
 			while(strScreen.equals("menu")){
 				con.clear();
 				con.println("Welcome to Guess the Word!");
@@ -54,6 +61,23 @@ public class ICSCPT{
 				}
 			}
 			
+			while(strScreen.equals("play")){
+				con.clear();
+				System.out.println(strChoice);
+				con.println("What is your username?");
+				strUsername = con.readLine();
+				con.clear();
+				con.println("Your Username: " + strUsername);
+				con.println("Choose a Theme:");
+				con.println("(1) Anime");
+				con.println("(2) Animals");
+				con.println("(3) Marvel Characters");
+				con.println("(4) Pokemon");
+				con.println("(5) Video Games");
+				strTheme = con.readLine();
+								
+			}
+			//highscore screen
 			while(strScreen.equals("highscore")){
 				
 			}
@@ -73,7 +97,7 @@ public class ICSCPT{
 					strScreen = "menu";
 				}
 			}
-			
+			//secret menu
 			while(strScreen.equals("secret")){
 				con.clear();
 				System.out.println(strChoice);
@@ -93,7 +117,7 @@ public class ICSCPT{
 					strScreen = "menu";
 				}
 			}
-			
+			//quit feature
 			while(strScreen.equals("quit")){
 				con.closeConsole();
 			}
