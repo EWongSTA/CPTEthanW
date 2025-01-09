@@ -80,19 +80,26 @@ public class ICSCPT{
 				con.println("(5) Video Games");
 				strTheme = con.readLine();
 				if (strTheme.equals("1")){
-					con.println("You have chosen " + strTheme);
+					con.println("You have chosen Theme: Anime");
+					strScreen = "X";
+					con.clear();
 				}
 				else if(strTheme.equals("2")){
-					con.println("You have chosen " + strTheme);
+					con.println("You have chosen Theme: Animals");
+					strScreen = "X";
+					
 				}
 				else if(strTheme.equals("3")){
-					con.println("You have chosen " + strTheme);
+					con.println("You have chosen Theme: Marvel Characters");
+					strScreen = "X";
 				}
 				else if(strTheme.equals("4")){
-					con.println("You have chosen " + strTheme);
+					con.println("You have chosen Theme: Pokemon");
+					strScreen = "X";
 				}
 				else if(strTheme.equals("5")){
-					con.println("You have chosen " + strTheme);
+					con.println("You have chosen Theme: Video Games");
+					strScreen = "X";
 				}
 			}
 			//highscore screen
