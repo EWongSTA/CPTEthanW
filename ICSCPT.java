@@ -13,11 +13,6 @@ public class ICSCPT{
 		Console con = new Console("Guess The Word", 1280, 720);
 		//themes + highscore files
 		TextInputFile themes = new TextInputFile("themes.txt");
-		TextInputFile pokemon = new TextInputFile("pokemon.txt");
-		TextInputFile VideoGames = new TextInputFile("VideoGames.txt");
-		TextInputFile Marvel = new TextInputFile("MarvelCharacters.txt");
-		TextInputFile Anime = new TextInputFile("Anime.txt");
-		TextInputFile Animals = new TextInputFile("Animals.txt");
 		
 		//logo
 		methodsCPT.logo(con);
@@ -80,30 +75,37 @@ public class ICSCPT{
 				con.println("(5) Video Games");
 				strTheme = con.readLine();
 				if (strTheme.equals("1")){
+					TextInputFile Anime = new TextInputFile("Anime.txt");
 					con.println("You have chosen Theme: Anime");
 					strScreen = "X";
 					con.clear();
+					
 				}
 				else if(strTheme.equals("2")){
+					TextInputFile Animals = new TextInputFile("Animals.txt");
 					con.println("You have chosen Theme: Animals");
 					strScreen = "X";
 					
 				}
 				else if(strTheme.equals("3")){
+					TextInputFile Marvel = new TextInputFile("MarvelCharacters.txt");
 					con.println("You have chosen Theme: Marvel Characters");
 					strScreen = "X";
 				}
 				else if(strTheme.equals("4")){
+					TextInputFile Pokemon = new TextInputFile("pokemon.txt");
 					con.println("You have chosen Theme: Pokemon");
 					strScreen = "X";
 				}
 				else if(strTheme.equals("5")){
+					TextInputFile VideoGames = new TextInputFile("VideoGames.txt");
 					con.println("You have chosen Theme: Video Games");
 					strScreen = "X";
 				}
 			}
 			//highscore screen
 			while(strScreen.equals("highscore")){
+				TextOutputFile HighScore = new TextOutputFile("highscore.txt");
 					con.println("HighScores:");
 					
 				}
