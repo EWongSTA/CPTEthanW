@@ -16,7 +16,7 @@ public class ICSCPT{
 		
 		//logo
 		methodsCPT.logo(con);
-		con.sleep(3000);
+		con.sleep(2000);
 		con.clear();
 		
 		//variables
@@ -28,6 +28,11 @@ public class ICSCPT{
 		String strTheme;
 		String strUsernameHS;
 		int intScore;
+		String strFileName;
+		String strWord[][];
+		int intRow;
+		intRow = 0;
+		strWord = new String [intRow][2];
 		
 		//keep the game running 
 		while(true){
@@ -38,19 +43,24 @@ public class ICSCPT{
 				con.println("What would you like to do:");
 				con.println("Play / HighScore / Help / Quit");
 				strChoice = con.readLine();
-				if(strChoice.equalsIgnoreCase("p")){
+				if(strChoice.equalsIgnoreCase("p") || strChoice.equalsIgnoreCase("play")){
+					System.out.println("user wants to play");
 					strScreen = "play";
 				}
-				else if(strChoice.equalsIgnoreCase("hs")){
+				else if(strChoice.equalsIgnoreCase("hs") || strChoice.equalsIgnoreCase("highscore")){
+					System.out.println("User is checking highscores");
 					strScreen = "highscore";
 				}
-				else if(strChoice.equalsIgnoreCase("h")){
+				else if(strChoice.equalsIgnoreCase("h") || strChoice.equalsIgnoreCase("help")){
+					System.out.println("User checking help menu");
 					strScreen = "help";
 				}
-				else if(strChoice.equalsIgnoreCase("secret")){
+				else if(strChoice.equalsIgnoreCase("UUDDLRLRBASTART")){
+					System.out.println("User found secret menu");
 					strScreen = "secret";
 				}
-				else if(strChoice.equalsIgnoreCase("q")){
+				else if(strChoice.equalsIgnoreCase("q") || strChoice.equalsIgnoreCase("quit")){
+					System.out.println("User quit");
 					strScreen = "quit";
 				}else{
 					strScreen = "menu";
@@ -74,17 +84,30 @@ public class ICSCPT{
 				con.println("(4) Pokemon");
 				con.println("(5) Video Games");
 				strTheme = con.readLine();
+				
+				while(themes.eof() == false){
+					strWord[intRow][0] = themes.readLine();
+					System.out.println(strWord[intRow][0]);
+					themes.close();
+				}
 				if (strTheme.equals("1")){
+					strFileName = "Anime.txt";
 					TextInputFile Anime = new TextInputFile("Anime.txt");
 					con.println("You have chosen Theme: Anime");
 					strScreen = "X";
 					con.clear();
+					while(strTheme.equals("1")){
+						
+					}
 					
 				}
 				else if(strTheme.equals("2")){
 					TextInputFile Animals = new TextInputFile("Animals.txt");
 					con.println("You have chosen Theme: Animals");
 					strScreen = "X";
+					while(strTheme.equals("2")){
+						
+					}
 					
 				}
 				else if(strTheme.equals("3")){
@@ -106,7 +129,9 @@ public class ICSCPT{
 			//highscore screen
 			while(strScreen.equals("highscore")){
 				TextOutputFile HighScore = new TextOutputFile("highscore.txt");
+					con.clear();
 					con.println("HighScores:");
+					strScreen = "X";
 					
 				}
 				
