@@ -33,6 +33,7 @@ public class ICSCPT{
 		int intRow;
 		intRow = 0;
 		strWord = new String [intRow][2];
+		int intThemeLength = 0;
 		
 		//keep the game running 
 		while(true){
@@ -86,9 +87,11 @@ public class ICSCPT{
 				strTheme = con.readLine();
 				
 				while(themes.eof() == false){
+					for(intRow = 0; intRow < intThemeLength; intRow++){
 					strWord[intRow][0] = themes.readLine();
 					System.out.println(strWord[intRow][0]);
 					themes.close();
+					}
 				}
 				if (strTheme.equals("1")){
 					strFileName = "Anime.txt";
@@ -96,6 +99,7 @@ public class ICSCPT{
 					con.println("You have chosen Theme: Anime");
 					strScreen = "X";
 					con.clear();
+					
 					while(strTheme.equals("1")){
 						
 					}
@@ -132,9 +136,16 @@ public class ICSCPT{
 					con.clear();
 					con.println("HighScores:");
 					strScreen = "X";
+					con.println("");
+					con.println("");
+					con.println("");
+					con.println("Back to menu? Y / N");
+					strBackMenu = con.readLine();
+					if(strBackMenu.equalsIgnoreCase("y")){
+						strScreen = "menu";
 					
 				}
-				
+			}
 			//help option
 			while(strScreen.equals("help")){
 				con.clear();
