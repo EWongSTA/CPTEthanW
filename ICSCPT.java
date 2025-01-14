@@ -27,6 +27,7 @@ public class ICSCPT{
 		String strBackMenu;
 		String strTheme;
 		String strUsernameHS;
+		String strTemp;
 		int intScore;
 		String strFileName;
 		String strWord[][];
@@ -34,6 +35,13 @@ public class ICSCPT{
 		intRow = 0;
 		strWord = new String [intRow][2];
 		int intThemeLength = 0;
+		String strThemeArray[];
+		while (themes.eof() == false){
+			strTemp = themes.readLine();
+			intThemeLength++;
+		}
+		themes.close();
+		strThemeArray = new String[intThemeLength];
 		
 		//keep the game running 
 		while(true){
@@ -70,7 +78,7 @@ public class ICSCPT{
 			//play screens
 			while(strScreen.equals("play")){
 				con.clear();
-				System.out.println(strChoice);
+				System.out.println("user is in play menu");
 				//username
 				con.println("What is your username?");
 				strUsername = con.readLine();
@@ -85,12 +93,12 @@ public class ICSCPT{
 				con.println("(4) Pokemon");
 				con.println("(5) Video Games");
 				strTheme = con.readLine();
-				
-				while(themes.eof() == false){
+				TextInputFile theme = new TextInputFile("themes.txt");
+				while(theme.eof() == false){
 					for(intRow = 0; intRow < intThemeLength; intRow++){
-					strWord[intRow][0] = themes.readLine();
-					System.out.println(strWord[intRow][0]);
-					themes.close();
+						strWord[intRow][0] = theme.readLine();
+						System.out.println(strThemeArray[intThemeLength]);
+						theme.close();
 					}
 				}
 				if (strTheme.equals("1")){
@@ -101,7 +109,9 @@ public class ICSCPT{
 					con.clear();
 					
 					while(strTheme.equals("1")){
-						
+						con.clear();
+						con.println("You have chosen Theme: Anime");
+						strTheme = "X";
 					}
 					
 				}
