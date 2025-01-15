@@ -33,6 +33,7 @@ public class ICSCPT{
 		String strWord[][];
 		int intRow;
 		intRow = 0;
+		int intAnimeLength = 0;
 		strWord = new String [intRow][2];
 		int intThemeLength = 0;
 		String strThemeArray[];
@@ -40,6 +41,7 @@ public class ICSCPT{
 			strTemp = themes.readLine();
 			intThemeLength++;
 		}
+		int intCount;
 		themes.close();
 		strThemeArray = new String[intThemeLength];
 		
@@ -93,31 +95,34 @@ public class ICSCPT{
 				con.println("(4) Pokemon");
 				con.println("(5) Video Games");
 				strTheme = con.readLine();
+				con.clear();
+				
 				TextInputFile theme = new TextInputFile("themes.txt");
-				while(theme.eof() == false){
-					for(intRow = 0; intRow < intThemeLength; intRow++){
-						strWord[intRow][0] = theme.readLine();
-						System.out.println(strThemeArray[intThemeLength]);
-						theme.close();
-					}
-				}
+				
 				if (strTheme.equals("1")){
+					con.println("You have chosen Theme: Anime");
+					con.println("");
+					con.println("Here is your first word: ");
 					strFileName = "Anime.txt";
 					TextInputFile Anime = new TextInputFile("Anime.txt");
-					con.println("You have chosen Theme: Anime");
 					strScreen = "X";
-					con.clear();
-					
-					while(strTheme.equals("1")){
-						con.clear();
-						con.println("You have chosen Theme: Anime");
-						strTheme = "X";
+					while(Anime.eof()==false){
+						Anime.readLine();
+						intAnimeLength++;
 					}
+					
+					for(intCount = 0; intCount < intAnimeLength; intCount++){
+						System.out.println(strWord[intCount][0]);
+					}
+					
+					
 					
 				}
 				else if(strTheme.equals("2")){
-					TextInputFile Animals = new TextInputFile("Animals.txt");
 					con.println("You have chosen Theme: Animals");
+					con.println("");
+					con.println("Here is your first word: ");
+					TextInputFile Animals = new TextInputFile("Animals.txt");
 					strScreen = "X";
 					while(strTheme.equals("2")){
 						
@@ -125,18 +130,24 @@ public class ICSCPT{
 					
 				}
 				else if(strTheme.equals("3")){
-					TextInputFile Marvel = new TextInputFile("MarvelCharacters.txt");
 					con.println("You have chosen Theme: Marvel Characters");
+					con.println("");
+					con.println("Here is your first word: ");
+					TextInputFile Marvel = new TextInputFile("MarvelCharacters.txt");
 					strScreen = "X";
 				}
 				else if(strTheme.equals("4")){
-					TextInputFile Pokemon = new TextInputFile("pokemon.txt");
 					con.println("You have chosen Theme: Pokemon");
+					con.println("");
+					con.println("Here is your first word: ");
+					TextInputFile Pokemon = new TextInputFile("pokemon.txt");
 					strScreen = "X";
 				}
 				else if(strTheme.equals("5")){
-					TextInputFile VideoGames = new TextInputFile("VideoGames.txt");
 					con.println("You have chosen Theme: Video Games");
+					con.println("");
+					con.println("Here is your first word: ");
+					TextInputFile VideoGames = new TextInputFile("VideoGames.txt");
 					strScreen = "X";
 				}
 			}
