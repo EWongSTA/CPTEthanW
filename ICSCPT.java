@@ -21,6 +21,7 @@ public class ICSCPT{
 		
 		//variables
 		String strUsername = "";
+		int intGuesses = 0;
 		String strScreen = "menu";
 		String strChoice;
 		strChoice = "";
@@ -28,12 +29,11 @@ public class ICSCPT{
 		String strTheme;
 		String strUsernameHS;
 		String strTemp;
-		int intScore;
+		int intScore = 0;
 		String strFileName;
 		String strWord[][];
 		int intRow;
 		intRow = 0;
-		int intAnimeLength = 0;
 		strWord = new String [intRow][2];
 		int intThemeLength = 0;
 		String strThemeArray[];
@@ -84,87 +84,42 @@ public class ICSCPT{
 				//username
 				con.println("What is your username?");
 				strUsername = con.readLine();
-				con.clear();
-				con.println("Your Username: " + strUsername);
+				//secret cheat 
+				if(strUsername.equals("Funky Monkey")){
+					strScreen = "X";
+					con.println("You found the secret cheat!");
+					con.println("You get 2 extra points!");
+					intScore = intScore + 2;
+				}
+				//ask user what theme to play
 				con.println("");
-				//theme chooser
-				con.println("Choose a Theme:");
-				con.println("(1) Anime");
-				con.println("(2) Animals");
+				con.println("Choose a theme:");
+				con.println("(1) Animals");
+				con.println("(2) Anime");
 				con.println("(3) Marvel Characters");
 				con.println("(4) Pokemon");
 				con.println("(5) Video Games");
-				strTheme = con.readLine();
-				con.clear();
+				strChoice = con.readLine();
 				
-				TextInputFile theme = new TextInputFile("themes.txt");
-				
-				if (strTheme.equals("1")){
-					con.println("You have chosen Theme: Anime");
-					con.println("");
-					con.println("Here is your first word: ");
-					strFileName = "Anime.txt";
-					TextInputFile Anime = new TextInputFile("Anime.txt");
-					strScreen = "X";
-					while(Anime.eof()==false){
-						Anime.readLine();
-						intAnimeLength++;
-					}
-					
-					for(intCount = 0; intCount < intAnimeLength; intCount++){
-						System.out.println(strWord[intCount][0]);
-					}
-					
-					
-					
+				if(strChoice.equals("1")){
+					con.println("You chose Theme: Animals");
+					strScreen = "game";
 				}
-				else if(strTheme.equals("2")){
-					con.println("You have chosen Theme: Animals");
-					con.println("");
-					con.println("Here is your first word: ");
-					TextInputFile Animals = new TextInputFile("Animals.txt");
-					strScreen = "X";
-					while(strTheme.equals("2")){
-						
-					}
-					
+				else if(strChoice.equals("2")){
+					con.println("You chose Theme: Anime");
+					strScreen = "game";
 				}
-				else if(strTheme.equals("3")){
-					con.println("You have chosen Theme: Marvel Characters");
-					con.println("");
-					con.println("Here is your first word: ");
-					TextInputFile Marvel = new TextInputFile("MarvelCharacters.txt");
-					strScreen = "X";
+				else if(strChoice.equals("3")){
+					con.println("You chose Theme: Marvel Characters");
+					strScreen = "game";
 				}
-				else if(strTheme.equals("4")){
-					con.println("You have chosen Theme: Pokemon");
-					con.println("");
-					con.println("Here is your first word: ");
-					TextInputFile Pokemon = new TextInputFile("pokemon.txt");
-					strScreen = "X";
+				else if(strChoice.equals("4")){
+					con.println("You chose Theme: Pokemon");
+					strScreen = "game";
 				}
-				else if(strTheme.equals("5")){
-					con.println("You have chosen Theme: Video Games");
-					con.println("");
-					con.println("Here is your first word: ");
-					TextInputFile VideoGames = new TextInputFile("VideoGames.txt");
-					strScreen = "X";
-				}
-			}
-			//highscore screen
-			while(strScreen.equals("highscore")){
-				TextOutputFile HighScore = new TextOutputFile("highscore.txt");
-					con.clear();
-					con.println("HighScores:");
-					strScreen = "X";
-					con.println("");
-					con.println("");
-					con.println("");
-					con.println("Back to menu? Y / N");
-					strBackMenu = con.readLine();
-					if(strBackMenu.equalsIgnoreCase("y")){
-						strScreen = "menu";
-					
+				else if(strChoice.equals("5")){
+					con.println("You chose Theme: Video Games");
+					strScreen = "game";
 				}
 			}
 			//help option
@@ -203,6 +158,13 @@ public class ICSCPT{
 					strScreen = "menu";
 				}
 			}
+			//game
+			while(strScreen.equals("game")){
+				con.clear();
+				con.println("You have chosen Theme: "+ strChoice);
+				strScreen = "x";
+			}
+			
 			//quit feature
 			while(strScreen.equals("quit")){
 				con.closeConsole();
