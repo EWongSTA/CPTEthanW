@@ -21,13 +21,11 @@ public class ICSCPT{
 		
 		//variables
 		String strUsername = "";
-		int intGuesses = 0;
 		String strScreen = "menu";
 		String strChoice;
 		strChoice = "";
 		String strBackMenu;
 		String strTheme;
-		String strUsernameHS;
 		String strTemp;
 		int intScore = 0;
 		String strFileName;
@@ -160,9 +158,12 @@ public class ICSCPT{
 			}
 			//game
 			while(strScreen.equals("game")){
+				System.out.println("User is now playing game");
 				con.clear();
 				con.println("You have chosen Theme: "+ strChoice);
-				strScreen = "x";
+				
+				
+				
 			}
 			
 			//quit feature
