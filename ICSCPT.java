@@ -11,8 +11,6 @@ public class ICSCPT{
 	public static void main(String [] args){
 		//changing console size
 		Console con = new Console("Guess The Word", 1280, 720);
-		//themes + highscore files
-		TextInputFile themes = new TextInputFile("themes.txt");
 		
 		//logo
 		methodsCPT.logo(con);
@@ -20,28 +18,22 @@ public class ICSCPT{
 		con.clear();
 		
 		//variables
+		
+		//choice variables
 		String strUsername = "";
 		String strScreen = "menu";
-		String strChoice;
-		strChoice = "";
+		String strChoice = "";
 		String strBackMenu;
+		String strGuess;
 		String strTheme;
-		String strTemp;
+
+		//Game Variables
 		int intScore = 0;
-		String strFileName;
-		String strWord[][];
-		int intRow;
-		intRow = 0;
-		strWord = new String [intRow][2];
-		int intThemeLength = 0;
+		String strFileName = "";
+		int intThemeLength1 = 0;
 		String strThemeArray[];
-		while (themes.eof() == false){
-			strTemp = themes.readLine();
-			intThemeLength++;
-		}
 		int intCount;
-		themes.close();
-		strThemeArray = new String[intThemeLength];
+		strThemeArray = new String[intThemeLength1];
 		
 		//keep the game running 
 		while(true){
@@ -101,22 +93,27 @@ public class ICSCPT{
 				
 				if(strChoice.equals("1")){
 					con.println("You chose Theme: Animals");
+					strFileName = "Animals.txt";
 					strScreen = "game";
 				}
 				else if(strChoice.equals("2")){
 					con.println("You chose Theme: Anime");
+					strFileName = "Anime.txt";
 					strScreen = "game";
 				}
 				else if(strChoice.equals("3")){
 					con.println("You chose Theme: Marvel Characters");
+					strFileName = "MarvelCharacters.txt";
 					strScreen = "game";
 				}
 				else if(strChoice.equals("4")){
 					con.println("You chose Theme: Pokemon");
+					strFileName = "Pokemon.txt";
 					strScreen = "game";
 				}
 				else if(strChoice.equals("5")){
 					con.println("You chose Theme: Video Games");
+					strFileName = "VideoGames.txt";
 					strScreen = "game";
 				}
 			}
@@ -159,12 +156,95 @@ public class ICSCPT{
 			//game
 			while(strScreen.equals("game")){
 				System.out.println("User is now playing game");
-				con.clear();
-				con.println("You have chosen Theme: "+ strChoice);
+				con.print("Word:");
+					String strTempWord;
+					String strTempRand;
+					int intThemeLength = 0;
+					int intRow2;
+					int intRow;
+					int intLength;
+					strGuess = "";
+					
+					
+					TextInputFile Count = new TextInputFile(strFileName);
+					while(Count.eof() == false){
+						strTempWord = Count.readLine();
+						intThemeLength++;
+						
+					}
+					
+					Count.close();
+
+					String strWord[][] = new String[intThemeLength][2];
+					TextInputFile Reading = new TextInputFile(strFileName);
+					for(intCount = 0; intCount < intThemeLength; intCount++){
+						strWord[intCount][1] = (methodsCPT.Random1to100() +"");
+						strWord[intCount][0] = Reading.readLine();
+					}
+					
+
+					for(intRow2 = 0; intRow2 < intThemeLength - 1; intRow2++){
+						for(intRow = 0; intRow < intThemeLength - 1; intRow++){
+							if(Integer.parseInt(strWord[intRow][1]) > Integer.parseInt(strWord[intRow+1][1])){
+								strTempWord = strWord[intRow][0];
+								strTempRand = strWord[intRow][1];
+								strWord[intRow][0] = strWord[intRow + 1][0];
+								strWord[intRow][1] = strWord[intRow + 1][1];
+								
+								strWord[intRow + 1][0] = strTempWord;
+								strWord[intRow + 1][1] = strTempRand;
+							}
+						}
+					}
+						
+					System.out.println(strWord[0][0]);
+					
+					intLength = strWord[0][0].length();
+					
+					String strLetters[][] = new String[intLength][2];
+					
+					for(intCount = 0; intCount < intLength; intCount++){
+						strLetters[intCount][0] = strWord[0][0].substring(intCount,intCount+1);
+						strLetters[intCount][1] = (methodsCPT.Random1to100() + "");
+					}
+					
+						for(intRow2 = 0; intRow2 < intLength - 1; intRow2++){
+						for(intRow = 0; intRow < intLength - 1; intRow++){
+							if(Integer.parseInt(strLetters[intRow][1]) > Integer.parseInt(strLetters[intRow+1][1])){
+								strTempWord = strLetters[intRow][0];
+								strTempRand = strLetters[intRow][1];
+								strLetters[intRow][0] = strLetters[intRow + 1][0];
+								strLetters[intRow][1] = strLetters[intRow + 1][1];
+								
+								strLetters[intRow + 1][0] = strTempWord;
+								strLetters[intRow + 1][1] = strTempRand;
+							}
+						}
+					}
+					
+					for(intCount = 0; intCount < intLength; intCount++){
+						con.print(strLetters[intCount][0]);
+					}
+					
+					//# of guesses variable
+					int intGuesses = intLength - 4;
+					
+				//spacing line
+				con.println("");
+				con.println("Guess:");
+				strGuess = con.readLine();
+				con.println("Guesses Remaining: " + intGuesses);
 				
-				
+				if(strGuess.equals(strWord[0][0])){
+				con.println("Correct! The word was: " + strWord[0][0]);
+				intCount = intCount + 1;
+			}
+			else if(!strGuess.equals(strWord[0][0])){
+				con.println("Incorrect! Try Again!");
 				
 			}
+			
+		}
 			
 			//quit feature
 			while(strScreen.equals("quit")){
