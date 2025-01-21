@@ -10,3 +10,27 @@ Wolverine
 Bruce Banner
 Black panther
 Deadpool
+Hawkeye
+Adam Warlock
+Galacta
+Magneto
+Storm
+Daredevil
+Punisher
+Silver Surfer
+Richard Reed
+Nick Fury
+Human Torch
+Bucky Barnes
+The Thing
+She Hulk
+Namor
+Iron Fist
+Scarlet Witch
+Moon Knight
+Captain Marvel
+Vision
+Dagger
+Cloak
+Squirrel Girl
+Magik
