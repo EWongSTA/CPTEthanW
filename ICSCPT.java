@@ -34,6 +34,7 @@ public class ICSCPT{
 		String strThemeArray[];
 		int intCount;
 		strThemeArray = new String[intThemeLength1];
+		boolean boolGuess = false;
 		
 		//keep the game running 
 		while(true){
@@ -42,7 +43,7 @@ public class ICSCPT{
 				con.clear();
 				con.println("Welcome to Guess the Word!");
 				con.println("What would you like to do:");
-				con.println("Play / HighScore / Help / Quit");
+				con.println("(P)lay / (H)igh(S)core / (H)elp / (Q)uit");
 				strChoice = con.readLine();
 				if(strChoice.equalsIgnoreCase("p") || strChoice.equalsIgnoreCase("play")){
 					System.out.println("user wants to play");
@@ -80,6 +81,7 @@ public class ICSCPT{
 					con.println("You found the secret cheat!");
 					con.println("You get 2 extra points!");
 					intScore = intScore + 2;
+					System.out.println("Score is: " +intScore);
 				}
 				//ask user what theme to play
 				con.println("");
@@ -120,7 +122,6 @@ public class ICSCPT{
 			//help option
 			while(strScreen.equals("help")){
 				con.clear();
-				System.out.println(strChoice);
 				con.println("In Guess The Word, the aim of the game is to correctly guess what the word is.");
 				con.println("You get a certain amount of guesses and when you run out of guesses you lose!");
 				con.println("Try and guess as many words as possible!");
@@ -229,22 +230,61 @@ public class ICSCPT{
 					//# of guesses variable
 					int intGuesses = intLength - 4;
 					
-				//spacing line
-				con.println("");
-				con.println("Guess:");
-				strGuess = con.readLine();
-				con.println("Guesses Remaining: " + intGuesses);
-				
-				if(strGuess.equals(strWord[0][0])){
-				con.println("Correct! The word was: " + strWord[0][0]);
-				intCount = intCount + 1;
+				//spacing lines
+					con.println("");
+					con.println("");
+					con.println("");
+					con.println("");
+					con.println("");
+					con.println("Guesses Remaining: " + intGuesses);
+					con.println("Guess:");
+					strGuess = con.readLine();
+					
+					
+					if(strGuess.equalsIgnoreCase(strWord[0][0])){
+						con.clear();
+						intScore = intScore + 1;
+						System.out.println("score: " + intScore);
+						con.println("You are correct! The word was: " + strWord[0][0]);
+						con.println("Would you like to play again? Y / N");
+						strChoice = con.readLine();
+						if(strChoice.equalsIgnoreCase("y") || strChoice.equalsIgnoreCase("yes")){
+							con.clear();
+							strScreen = "game";
+						}
+						else if(strChoice.equalsIgnoreCase("n") || strChoice.equalsIgnoreCase("no")){
+							strScreen = "menu";
+							//highscore file
+							TextOutputFile Highscore = new TextOutputFile("highscore.txt", true);
+							Highscore.println(strUsername);
+							Highscore.println(intScore);
+						}
+					}	
+					else if(!strGuess.equalsIgnoreCase(strWord[0][0])){
+						con.println("You are Incorrect! Try again.");
+						intGuesses = intGuesses - 1;
+						System.out.println(intGuesses);
+					}
 			}
-			else if(!strGuess.equals(strWord[0][0])){
-				con.println("Incorrect! Try Again!");
-				
-			}
+		
+			//highscore variables
+			String strUsernameHS = "";
+			int intHighscore = 0;
 			
-		}
+		
+			//highscore feature
+			while(strScreen.equals("highscore")){
+				con.clear();
+				con.println("Highscores:");
+				con.println("");
+				con.println("");
+				con.println("");
+				con.println("Back to menu? Y / N");
+				strBackMenu = con.readLine();
+				if(strBackMenu.equalsIgnoreCase("y")){
+					strScreen = "menu";
+				}
+			}
 			
 			//quit feature
 			while(strScreen.equals("quit")){
