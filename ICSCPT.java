@@ -73,6 +73,7 @@ public class ICSCPT{
 				//username
 				con.println("What is your username?");
 				strUsername = con.readLine();
+
 				//secret cheat 
 				if(strUsername.equals("Funky Monkey")){
 					strScreen = "X";
@@ -122,7 +123,9 @@ public class ICSCPT{
 					strThemeName = "Video Game Titles";
 					strFileName = "VideoGames.txt";
 					strScreen = "game";
-
+				}
+				else{
+					strScreen = "menu";
 				}
 			}
 			//help option
@@ -318,11 +321,11 @@ public class ICSCPT{
 					strUsernameHS = Highscores.readLine();
 					intHighscore = Highscores.readInt();
 					strThemeName = Highscores.readLine();
-
+					con.sleep(350);
 					con.println("username: "+strUsernameHS);
-
+					con.sleep(350);
 					con.println("Score: " +intHighscore);
-
+					con.sleep(350);
 					con.println("Theme: " +strThemeName);
 				}
 				Highscores.close();
