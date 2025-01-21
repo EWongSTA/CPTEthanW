@@ -271,6 +271,7 @@ public class ICSCPT{
 								Highscore.println(intScore);
 								Highscore.println(strThemeName);
 								Highscore.close();
+								intScore = 0;
 								break;
 								
 							}
@@ -294,6 +295,7 @@ public class ICSCPT{
 									Highscore.println(strUsername);
 									Highscore.println(intScore);
 									Highscore.println(strThemeName);
+									intScore = 0;
 									break;
 									
 								}
@@ -316,11 +318,11 @@ public class ICSCPT{
 					strUsernameHS = Highscores.readLine();
 					intHighscore = Highscores.readInt();
 					strThemeName = Highscores.readLine();
-					con.sleep(500);
+
 					con.println("username: "+strUsernameHS);
-					con.sleep(500);
+
 					con.println("Score: " +intHighscore);
-					con.sleep(500);
+
 					con.println("Theme: " +strThemeName);
 				}
 				Highscores.close();
