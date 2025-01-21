@@ -194,6 +194,8 @@ public class ICSCPT{
 								
 								strWord[intRow + 1][0] = strTempWord;
 								strWord[intRow + 1][1] = strTempRand;
+								System.out.println(strTempWord);
+								System.out.println(strTempRand);
 							}
 						}
 					}
@@ -219,6 +221,8 @@ public class ICSCPT{
 								
 								strLetters[intRow + 1][0] = strTempWord;
 								strLetters[intRow + 1][1] = strTempRand;
+								System.out.println(strTempWord);
+								System.out.println(strTempRand);
 							}
 						}
 					}
