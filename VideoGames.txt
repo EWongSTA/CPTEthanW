@@ -11,7 +11,7 @@ Minecraft
 Fruit Ninja
 Genshin Impact
 Honkai Star Rail
-GTA
+Grand Theft Auto
 Castlevania
 Hades
 Overwatch
@@ -38,7 +38,7 @@ World of Warcraft
 Skyrim
 Sid Meier's Civilization VI
 Zelda: Ocarina of Time
-Doom
+Doom Eternal
 Tetris
 God of War
 Portal

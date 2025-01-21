@@ -29,10 +29,9 @@ public class ICSCPT{
 		//Game Variables
 		int intScore = 0;
 		String strFileName = "";
-		int intThemeLength1 = 0;
 		String strThemeArray[];
 		int intCount;
-		boolean boolGuess = false;
+		boolean boolGuesses = false;
 		String strThemeName = "";
 		
 		//keep the game running 
@@ -103,6 +102,7 @@ public class ICSCPT{
 					strThemeName = "Anime";
 					strFileName = "Anime.txt";
 					strScreen = "game";
+
 				}
 				else if(strChoice.equals("3")){
 					con.println("You chose Theme: Marvel Characters");
@@ -115,12 +115,14 @@ public class ICSCPT{
 					strThemeName = "Pokemon";
 					strFileName = "Pokemon.txt";
 					strScreen = "game";
+
 				}
 				else if(strChoice.equals("5")){
-					con.println("You chose Theme: Video Games");
-					strThemeName = "Video Games";
+					con.println("You chose Theme: Video Game Titles");
+					strThemeName = "Video Game Titles";
 					strFileName = "VideoGames.txt";
 					strScreen = "game";
+
 				}
 			}
 			//help option
@@ -169,6 +171,7 @@ public class ICSCPT{
 					int intRow;
 					int intLength;
 					strGuess = "";
+					int intWordCount = 0;
 					
 					TextInputFile Count = new TextInputFile(strFileName);
 					while(Count.eof() == false){
@@ -201,15 +204,15 @@ public class ICSCPT{
 						}
 					}
 					
-					System.out.println(strWord[0][0]);
+					System.out.println(strWord[intWordCount][0]);
 					
 					//grabbing length of selected word
-					intLength = strWord[0][0].length();
+					intLength = strWord[intWordCount][0].length();
 					
 					String strLetters[][] = new String[intLength][2];
 					
 					for(intCount = 0; intCount < intLength; intCount++){
-						strLetters[intCount][0] = strWord[0][0].substring(intCount,intCount+1);
+						strLetters[intCount][0] = strWord[intWordCount][0].substring(intCount,intCount+1);
 						strLetters[intCount][1] = (methodsCPT.Random1to100() + "");
 					}
 						//bubble sort for scrambling letters
@@ -226,54 +229,80 @@ public class ICSCPT{
 							}
 						}
 					}
-					//printing scrambled words
-					for(intCount = 0; intCount < intLength; intCount++){
-						con.print(strLetters[intCount][0]);
-					}
-					
 					//# of guesses variable
 					int intGuesses = intLength - 4;
 					
-				//spacing lines
-					con.println("");
-					con.println("");
-					con.println("");
-					con.println("");
-					con.println("");
-					con.println("Guesses Remaining: " + intGuesses);
-					con.println("Guess:");
-					strGuess = con.readLine();
-					//if guessed word matches secret word 
-					if(strGuess.equalsIgnoreCase(strWord[0][0])){
-						con.clear();
-						intScore = intScore + 1;
-						System.out.println("score: " + intScore);
-						con.println("You are correct! The word was: " + strWord[0][0]);
-						con.println("Would you like to play again? Y / N");
-						strChoice = con.readLine();
-						//if user wants to play again
-						if(strChoice.equalsIgnoreCase("y") || strChoice.equalsIgnoreCase("yes")){
+					//printing scrambled words
+					while(intGuesses > 0){
+						for(intCount = 0; intCount < intLength; intCount++){
+							con.print(strLetters[intCount][0]);
+						}
+						//spacing lines
+						con.println("");
+						con.println("");
+						con.println("");
+						con.println("");
+						con.println("");
+						con.println("Guesses Remaining: " + intGuesses);
+						con.println("Guess:");
+						strGuess = con.readLine();
+						System.out.println("Score: " + intScore);
+						//if guessed word matches secret word 
+						if(strGuess.equalsIgnoreCase(strWord[intWordCount][0])){
 							con.clear();
-							strScreen = "game";
+							intScore = intScore + 1;
+							System.out.println("score: " + intScore);
+							con.println("You are correct! The word was: " + strWord[intWordCount][0]);
+							con.println("Would you like to play again? Y / N");
+							strChoice = con.readLine();
+							//if user wants to play again
+							if(strChoice.equalsIgnoreCase("y") || strChoice.equalsIgnoreCase("yes")){
+								con.clear();
+								intGuesses = 0;
+								strScreen = "game";
+								
+							}
+							//if user does not want to play again
+							else if(strChoice.equalsIgnoreCase("n") || strChoice.equalsIgnoreCase("no")){
+								strScreen = "menu";
+								//highscore file (input)
+								TextOutputFile Highscore = new TextOutputFile("highscore.txt", true);
+								Highscore.println(strUsername);
+								Highscore.println(intScore);
+								Highscore.println(strThemeName);
+								Highscore.close();
+								break;
+								
+							}
+						}	
+						//if guessed word does not equal secret word
+						else if(!strGuess.equalsIgnoreCase(strWord[intWordCount][0])){
+							con.clear();
+							con.println("You are Incorrect! Try again.");
+							intGuesses = intGuesses - 1;
+							if (intGuesses == 0){
+								con.println("the word was: " + strWord[intWordCount][0]);
+								con.println("Would you like to play again? Y / N");
+								strChoice = con.readLine();
+								if(strChoice.equalsIgnoreCase("y") || strChoice.equalsIgnoreCase("yes")){
+									con.clear();
+									strScreen = "game";
+								}
+								else if(strChoice.equalsIgnoreCase("n") || strChoice.equalsIgnoreCase("no")){
+									strScreen = "menu";
+									TextOutputFile Highscore = new TextOutputFile("highscore.txt", true);
+									Highscore.println(strUsername);
+									Highscore.println(intScore);
+									Highscore.println(strThemeName);
+									break;
+									
+								}
+							}
+							System.out.println(intGuesses);
 						}
-						//if user does not want to play again
-						else if(strChoice.equalsIgnoreCase("n") || strChoice.equalsIgnoreCase("no")){
-							strScreen = "menu";
-							//highscore file (input)
-							TextOutputFile Highscore = new TextOutputFile("highscore.txt", true);
-							Highscore.println(strUsername);
-							Highscore.println(intScore);
-							Highscore.println(strThemeName);
-						}
-					}	
-					//if guessed word does not equal secret word
-					else if(!strGuess.equalsIgnoreCase(strWord[0][0])){
-						con.println("You are Incorrect! Try again.");
-						intGuesses = intGuesses - 1;
-						System.out.println(intGuesses);
 					}
-			}
-		
+					
+				}	
 			//highscore variables
 			String strUsernameHS = "";
 			int intHighscore = 0;
@@ -287,8 +316,11 @@ public class ICSCPT{
 					strUsernameHS = Highscores.readLine();
 					intHighscore = Highscores.readInt();
 					strThemeName = Highscores.readLine();
+					con.sleep(500);
 					con.println("username: "+strUsernameHS);
+					con.sleep(500);
 					con.println("Score: " +intHighscore);
+					con.sleep(500);
 					con.println("Theme: " +strThemeName);
 				}
 				Highscores.close();
@@ -304,7 +336,6 @@ public class ICSCPT{
 			
 			//quit feature
 			while(strScreen.equals("quit")){
-				
 				con.closeConsole();
 			}
 		}
