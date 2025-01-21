@@ -4,7 +4,6 @@
 // Author:       Wong E.
 // Created:      Dec 16, 2024
 //-------------------------------------------------------------------------
-
 import arc.*;
 
 public class ICSCPT{
@@ -33,8 +32,8 @@ public class ICSCPT{
 		int intThemeLength1 = 0;
 		String strThemeArray[];
 		int intCount;
-		strThemeArray = new String[intThemeLength1];
 		boolean boolGuess = false;
+		String strThemeName = "";
 		
 		//keep the game running 
 		while(true){
@@ -95,26 +94,31 @@ public class ICSCPT{
 				
 				if(strChoice.equals("1")){
 					con.println("You chose Theme: Animals");
+					strThemeName = "Animals";
 					strFileName = "Animals.txt";
 					strScreen = "game";
 				}
 				else if(strChoice.equals("2")){
 					con.println("You chose Theme: Anime");
+					strThemeName = "Anime";
 					strFileName = "Anime.txt";
 					strScreen = "game";
 				}
 				else if(strChoice.equals("3")){
 					con.println("You chose Theme: Marvel Characters");
+					strThemeName = "Marvel Characters";
 					strFileName = "MarvelCharacters.txt";
 					strScreen = "game";
 				}
 				else if(strChoice.equals("4")){
 					con.println("You chose Theme: Pokemon");
+					strThemeName = "Pokemon";
 					strFileName = "Pokemon.txt";
 					strScreen = "game";
 				}
 				else if(strChoice.equals("5")){
 					con.println("You chose Theme: Video Games");
+					strThemeName = "Video Games";
 					strFileName = "VideoGames.txt";
 					strScreen = "game";
 				}
@@ -166,7 +170,6 @@ public class ICSCPT{
 					int intLength;
 					strGuess = "";
 					
-					
 					TextInputFile Count = new TextInputFile(strFileName);
 					while(Count.eof() == false){
 						strTempWord = Count.readLine();
@@ -183,7 +186,7 @@ public class ICSCPT{
 						strWord[intCount][0] = Reading.readLine();
 					}
 					
-
+					//bubble sort for words
 					for(intRow2 = 0; intRow2 < intThemeLength - 1; intRow2++){
 						for(intRow = 0; intRow < intThemeLength - 1; intRow++){
 							if(Integer.parseInt(strWord[intRow][1]) > Integer.parseInt(strWord[intRow+1][1])){
@@ -194,14 +197,13 @@ public class ICSCPT{
 								
 								strWord[intRow + 1][0] = strTempWord;
 								strWord[intRow + 1][1] = strTempRand;
-								System.out.println(strTempWord);
-								System.out.println(strTempRand);
 							}
 						}
 					}
-						
+					
 					System.out.println(strWord[0][0]);
 					
+					//grabbing length of selected word
 					intLength = strWord[0][0].length();
 					
 					String strLetters[][] = new String[intLength][2];
@@ -210,7 +212,7 @@ public class ICSCPT{
 						strLetters[intCount][0] = strWord[0][0].substring(intCount,intCount+1);
 						strLetters[intCount][1] = (methodsCPT.Random1to100() + "");
 					}
-					
+						//bubble sort for scrambling letters
 						for(intRow2 = 0; intRow2 < intLength - 1; intRow2++){
 						for(intRow = 0; intRow < intLength - 1; intRow++){
 							if(Integer.parseInt(strLetters[intRow][1]) > Integer.parseInt(strLetters[intRow+1][1])){
@@ -221,12 +223,10 @@ public class ICSCPT{
 								
 								strLetters[intRow + 1][0] = strTempWord;
 								strLetters[intRow + 1][1] = strTempRand;
-								System.out.println(strTempWord);
-								System.out.println(strTempRand);
 							}
 						}
 					}
-					
+					//printing scrambled words
 					for(intCount = 0; intCount < intLength; intCount++){
 						con.print(strLetters[intCount][0]);
 					}
@@ -243,8 +243,7 @@ public class ICSCPT{
 					con.println("Guesses Remaining: " + intGuesses);
 					con.println("Guess:");
 					strGuess = con.readLine();
-					
-					
+					//if guessed word matches secret word 
 					if(strGuess.equalsIgnoreCase(strWord[0][0])){
 						con.clear();
 						intScore = intScore + 1;
@@ -252,18 +251,22 @@ public class ICSCPT{
 						con.println("You are correct! The word was: " + strWord[0][0]);
 						con.println("Would you like to play again? Y / N");
 						strChoice = con.readLine();
+						//if user wants to play again
 						if(strChoice.equalsIgnoreCase("y") || strChoice.equalsIgnoreCase("yes")){
 							con.clear();
 							strScreen = "game";
 						}
+						//if user does not want to play again
 						else if(strChoice.equalsIgnoreCase("n") || strChoice.equalsIgnoreCase("no")){
 							strScreen = "menu";
-							//highscore file
+							//highscore file (input)
 							TextOutputFile Highscore = new TextOutputFile("highscore.txt", true);
 							Highscore.println(strUsername);
 							Highscore.println(intScore);
+							Highscore.println(strThemeName);
 						}
 					}	
+					//if guessed word does not equal secret word
 					else if(!strGuess.equalsIgnoreCase(strWord[0][0])){
 						con.println("You are Incorrect! Try again.");
 						intGuesses = intGuesses - 1;
@@ -275,11 +278,20 @@ public class ICSCPT{
 			String strUsernameHS = "";
 			int intHighscore = 0;
 			
-		
 			//highscore feature
 			while(strScreen.equals("highscore")){
 				con.clear();
+				TextInputFile Highscores = new TextInputFile("highscore.txt");
 				con.println("Highscores:");
+				while(Highscores.eof() == false){
+					strUsernameHS = Highscores.readLine();
+					intHighscore = Highscores.readInt();
+					strThemeName = Highscores.readLine();
+					con.println("username: "+strUsernameHS);
+					con.println("Score: " +intHighscore);
+					con.println("Theme: " +strThemeName);
+				}
+				Highscores.close();
 				con.println("");
 				con.println("");
 				con.println("");
@@ -292,10 +304,9 @@ public class ICSCPT{
 			
 			//quit feature
 			while(strScreen.equals("quit")){
+				
 				con.closeConsole();
 			}
 		}
-
-
 	}
 }
