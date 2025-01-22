@@ -30,7 +30,7 @@ public class ICSCPT{
 		int intScore = 0;
 		String strFileName = "";
 		String strThemeArray[];
-		int intCount;
+		int intCount = 0;
 		boolean boolGuesses = false;
 		String strThemeName = "";
 		
@@ -43,22 +43,27 @@ public class ICSCPT{
 				con.println("What would you like to do:");
 				con.println("(P)lay / (H)igh(S)core / (H)elp / (Q)uit");
 				strChoice = con.readLine();
+				// if user chooses play
 				if(strChoice.equalsIgnoreCase("p") || strChoice.equalsIgnoreCase("play")){
 					System.out.println("user wants to play");
 					strScreen = "play";
 				}
+				// if user chooses highscore
 				else if(strChoice.equalsIgnoreCase("hs") || strChoice.equalsIgnoreCase("highscore")){
 					System.out.println("User is checking highscores");
 					strScreen = "highscore";
 				}
+				// if user chooses help
 				else if(strChoice.equalsIgnoreCase("h") || strChoice.equalsIgnoreCase("help")){
 					System.out.println("User checking help menu");
 					strScreen = "help";
 				}
+				// if user finds secret menu
 				else if(strChoice.equalsIgnoreCase("UUDDLRLRBASTART")){
 					System.out.println("User found secret menu");
 					strScreen = "secret";
 				}
+				// if user chooses quit
 				else if(strChoice.equalsIgnoreCase("q") || strChoice.equalsIgnoreCase("quit")){
 					System.out.println("User quit");
 					strScreen = "quit";
@@ -85,11 +90,12 @@ public class ICSCPT{
 				//ask user what theme to play
 				con.println("");
 				con.println("Choose a theme:");
-				con.println("(1) Animals");
-				con.println("(2) Anime");
-				con.println("(3) Marvel Characters");
-				con.println("(4) Pokemon");
-				con.println("(5) Video Games");
+				TextInputFile theme = new TextInputFile("themes.txt");
+				while(theme.eof() == false){
+					intCount++;
+					strTheme = theme.readLine();
+					con.println("("+intCount +") " +strTheme);
+				}
 				strChoice = con.readLine();
 				
 				if(strChoice.equals("1")){
@@ -134,6 +140,14 @@ public class ICSCPT{
 				con.println("In Guess The Word, the aim of the game is to correctly guess what the word is.");
 				con.println("You get a certain amount of guesses and when you run out of guesses you lose!");
 				con.println("Try and guess as many words as possible!");
+				con.println("");
+				con.println("Controls:");
+				con.println("P - Play");
+				con.println("H - Help");
+				con.println("HS - Highscore");
+				con.println("Q - Quit");
+				con.println("SECRET MENU...");
+				con.println("FIND THE CHEAT!");
 				con.println("");
 				con.println("");
 				con.println("");
